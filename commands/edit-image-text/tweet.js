@@ -41,7 +41,7 @@ module.exports = class TweetCommand extends Command {
 				{
 					key: 'user',
 					type: 'string',
-					max: 25
+					max: 20
 				},
 				{
 					key: 'text',
