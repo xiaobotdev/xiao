@@ -38,7 +38,7 @@
 		"@snazzah/davey": "^0.1.7",
 		"@tensorflow-models/face-detection": "^1.0.3",
 		"@tensorflow/tfjs-node": "^4.22.0",
-		"@twemoji/parser": "^16.0.0",
+		"@twemoji/parser": "^17.0.1",
 		"bombsweeper.js": "^1.0.1",
 		"buffer": "^6.0.3",
 		"cheerio": "^1.1.2",
