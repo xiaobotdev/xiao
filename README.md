@@ -1,6 +1,8 @@
 # Xiao
 ![Xiao](https://raw.githubusercontent.com/lilyissillyyy/xiao/refs/heads/master/assets/Xiao.png)
 
+[![](https://dcbadge.limes.pink/api/server/https://discord.gg/xX8PgCx2AP)](https://discord.gg/xX8PgCx2AP)
+
 Xiao is a Discord bot coded in JavaScript with [discord.js](https://discord.js.org/). With over
 500 commands, she is one of the most feature-rich bots out there. Formerly XiaoBot.
 
