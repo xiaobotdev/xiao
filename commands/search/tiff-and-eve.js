@@ -44,10 +44,12 @@ module.exports = class TiffAndEveCommand extends Command {
 		const $current = cheerio.load(currentText);
 		const current = Number.parseInt($current('h6.colibri-word-wrap').first().text().trim().match(/(\d+)/)[1], 10);
 		if (query === 'today') {
-			const title = decodeHTML($current('h1.colibri-word-wrap').first().text().trim());
-			const image = $current('img.attachment-full.size-full').first().attr('src');
-			const alt = oneLine(decodeHTML($current('div.colibri-post-excerpt').first().text().trim()));
-			const date = $current('div.metadata-item').eq(1).text().trim();
+			const { text } = await request.get(`https://www.fransundblad.com/tiff-and-eve/${current}/`);
+			const $ = cheerio.load(text);
+			const title = decodeHTML($('h1.colibri-word-wrap').first().text().trim());
+			const image = $('img.attachment-full.size-full').first().attr('src');
+			const alt = oneLine(decodeHTML($('div.colibri-post-excerpt').first().text().trim()));
+			const date = $('div.metadata-item').eq(1).text().trim();
 			const embed = new EmbedBuilder()
 				.setTitle(`${date} - ${title}`)
 				.setColor(0xA7D8F0)
