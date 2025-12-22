@@ -115,7 +115,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 515
+Total: 516
 
 ### Utility:
 
@@ -292,6 +292,7 @@ Total: 515
 * **npm:** Responds with information on an NPM package.
 * **periodic-table:** Finds an element on the periodic table.
 * **rule:** Responds with a rule of the internet.
+* **tiff-and-eve:** Responds with a Tiff and Eve comic, either today's, a random one, or a specific one.
 * **urban:** Defines a word, but with Urban Dictionary.
 * **wikipedia:** Searches Wikipedia for your query.
 * **xkcd:** Responds with an XKCD comic, either today's, a random one, or a specific one.
@@ -926,6 +927,8 @@ Total: 515
 * **periodic-table:**
    - [Bowserinator](https://github.com/Bowserinator/) ([Periodic Table Data](https://github.com/Bowserinator/Periodic-Table-JSON))
    - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
+* **tiff-and-eve:**
+   - [Fran Sundblad](https://www.fransundblad.com/) ([Original Comic](https://www.fransundblad.com/tiff-and-eve/))
 * **urban:**
    - [Urban Dictionary](https://www.urbandictionary.com/) ([API](https://github.com/zdict/zdict/wiki/Urban-dictionary-API-documentation))
 * **wikipedia:**
