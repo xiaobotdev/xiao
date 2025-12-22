@@ -22,6 +22,16 @@ module.exports = class TiffAndEveCommand extends Command {
 					reasonURL: 'https://www.fransundblad.com/tiff-and-eve/'
 				}
 			],
+			flags: [
+				{
+					key: 'force',
+					description: 'Forces an update to the comic count.'
+				},
+				{
+					key: 'f',
+					description: 'Alias for force.'
+				}
+			],
 			args: [
 				{
 					key: 'query',
@@ -38,11 +48,12 @@ module.exports = class TiffAndEveCommand extends Command {
 			]
 		});
 
+		this.current = null;
 		this.cache = new Map();
 	}
 
-	async run(msg, { query }) {
-		const current = await this.fetchTotal();
+	async run(msg, { query, flags }) {
+		const current = await this.fetchTotal(Boolean(flags.force || flags.f));
 		if (query === 'today') {
 			const { title, alt, image, date } = await this.fetchComic(current);
 			const embed = new EmbedBuilder()
@@ -76,10 +87,13 @@ module.exports = class TiffAndEveCommand extends Command {
 		return msg.embed(embed);
 	}
 
-	async fetchTotal() {
+	async fetchTotal(force = false) {
+		if (this.current && !force) return this.current;
 		const { text } = await request.get('https://www.fransundblad.com/tiff-and-eve/');
 		const $ = cheerio.load(text);
-		return Number.parseInt($('h6.colibri-word-wrap').first().text().trim().match(/(\d+)/)[1], 10);
+		this.current = Number.parseInt($('h6.colibri-word-wrap').first().text().trim().match(/(\d+)/)[1], 10);
+		setTimeout(() => { this.current = null; }, 4.32e+7);
+		return this.current;
 	}
 
 	async fetchComic(number) {
