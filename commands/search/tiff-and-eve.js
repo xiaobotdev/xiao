@@ -50,7 +50,7 @@ module.exports = class TiffAndEveCommand extends Command {
 			const date = $current('div.metadata-item').eq(1).text().trim();
 			const embed = new EmbedBuilder()
 				.setTitle(`${date} - ${title}`)
-				.setColor(0x9797FF)
+				.setColor(0xA7D8F0)
 				.setURL(`https://www.fransundblad.com/tiff-and-eve/${current}/`)
 				.setImage(image)
 				.setFooter({ text: alt });
@@ -66,7 +66,7 @@ module.exports = class TiffAndEveCommand extends Command {
 			const date = $('div.metadata-item').eq(1).text().trim();
 			const embed = new EmbedBuilder()
 				.setTitle(`${date} - ${title}`)
-				.setColor(0x9797FF)
+				.setColor(0xA7D8F0)
 				.setURL(`https://www.fransundblad.com/tiff-and-eve/${random}/`)
 				.setImage(image)
 				.setFooter({ text: alt });
@@ -82,7 +82,7 @@ module.exports = class TiffAndEveCommand extends Command {
 		const date = $('div.metadata-item').eq(1).text().trim();
 		const embed = new EmbedBuilder()
 			.setTitle(`${date} - ${title}`)
-			.setColor(0x9797FF)
+			.setColor(0xA7D8F0)
 			.setURL(`https://www.fransundblad.com/tiff-and-eve/${choice}/`)
 			.setImage(image)
 			.setFooter({ text: alt });
