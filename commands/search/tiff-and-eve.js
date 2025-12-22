@@ -37,19 +37,14 @@ module.exports = class TiffAndEveCommand extends Command {
 				}
 			]
 		});
+
+		this.cache = new Map();
 	}
 
 	async run(msg, { query }) {
-		const { text: currentText } = await request.get('https://www.fransundblad.com/tiff-and-eve/');
-		const $current = cheerio.load(currentText);
-		const current = Number.parseInt($current('h6.colibri-word-wrap').first().text().trim().match(/(\d+)/)[1], 10);
+		const current = await this.fetchTotal();
 		if (query === 'today') {
-			const { text } = await request.get(`https://www.fransundblad.com/tiff-and-eve/${current}/`);
-			const $ = cheerio.load(text);
-			const title = decodeHTML($('h1.colibri-word-wrap').first().text().trim());
-			const image = $('img.attachment-full.size-full').first().attr('src');
-			const alt = oneLine(decodeHTML($('div.colibri-post-excerpt').first().text().trim()));
-			const date = $('div.metadata-item').eq(1).text().trim();
+			const { title, alt, image, date } = await this.fetchComic(current);
 			const embed = new EmbedBuilder()
 				.setTitle(`${date} - ${title}`)
 				.setColor(0xA7D8F0)
@@ -60,12 +55,7 @@ module.exports = class TiffAndEveCommand extends Command {
 		}
 		if (query === 'random') {
 			const random = Math.floor(Math.random() * (current + 1));
-			const { text } = await request.get(`https://www.fransundblad.com/tiff-and-eve/${random}/`);
-			const $ = cheerio.load(text);
-			const title = decodeHTML($('h1.colibri-word-wrap').first().text().trim());
-			const image = $('img.attachment-full.size-full').first().attr('src');
-			const alt = oneLine(decodeHTML($('div.colibri-post-excerpt').first().text().trim()));
-			const date = $('div.metadata-item').eq(1).text().trim();
+			const { title, alt, image, date } = await this.fetchComic(random);
 			const embed = new EmbedBuilder()
 				.setTitle(`${date} - ${title}`)
 				.setColor(0xA7D8F0)
@@ -76,12 +66,7 @@ module.exports = class TiffAndEveCommand extends Command {
 		}
 		const choice = Number.parseInt(query, 10);
 		if (current < choice) return msg.say('Could not find any results.');
-		const { text } = await request.get(`https://www.fransundblad.com/tiff-and-eve/${choice}/`);
-		const $ = cheerio.load(text);
-		const title = decodeHTML($('h1.colibri-word-wrap').first().text().trim());
-		const image = $('img.attachment-full.size-full').first().attr('src');
-		const alt = oneLine(decodeHTML($('div.colibri-post-excerpt').first().text().trim()));
-		const date = $('div.metadata-item').eq(1).text().trim();
+		const { title, alt, image, date } = await this.fetchComic(choice);
 		const embed = new EmbedBuilder()
 			.setTitle(`${date} - ${title}`)
 			.setColor(0xA7D8F0)
@@ -89,5 +74,25 @@ module.exports = class TiffAndEveCommand extends Command {
 			.setImage(image)
 			.setFooter({ text: alt });
 		return msg.embed(embed);
+	}
+
+	async fetchTotal() {
+		const { text } = await request.get('https://www.fransundblad.com/tiff-and-eve/');
+		const $ = cheerio.load(text);
+		return Number.parseInt($('h6.colibri-word-wrap').first().text().trim().match(/(\d+)/)[1], 10);
+	}
+
+	async fetchComic(number) {
+		if (this.cache.has(number)) return this.cache.get(number);
+		const { text } = await request.get(`https://www.fransundblad.com/tiff-and-eve/${number}/`);
+		const $ = cheerio.load(text);
+		const data = {
+			title: decodeHTML($('h1.colibri-word-wrap').first().text().trim()),
+			image: $('img.attachment-full.size-full').first().attr('src'),
+			alt: oneLine(decodeHTML($('div.colibri-post-excerpt').first().text().trim())),
+			date: $('div.metadata-item').eq(1).text().trim()
+		};
+		this.cache.set(number, data);
+		return data;
 	}
 };
