@@ -27,7 +27,7 @@ module.exports = class XKCDCommand extends Command {
 					validate: query => {
 						if (types.includes(query.toLowerCase())) return true;
 						const num = Number.parseInt(query, 10);
-						if (!Number.isNaN(num) && num > 1) return true;
+						if (!Number.isNaN(num) && num > 0) return true;
 						return `Invalid query, please enter either today, random, or a specific comic number.`;
 					},
 					parse: query => query.toLowerCase()
