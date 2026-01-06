@@ -7,7 +7,9 @@ const { checkFileExists } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
 
 module.exports = class JeopardyScrape {
-	constructor() {
+	constructor(client) {
+		Object.defineProperty(this, 'client', { value: client });
+
 		this.clues = [];
 		this.gameIDs = [];
 		this.seasons = [];
@@ -102,7 +104,11 @@ module.exports = class JeopardyScrape {
 	async checkForUpdates() {
 		if (!this.imported) {
 			const fileExists = await checkFileExists(path.join(__dirname, '..', 'jeopardy.json'));
-			if (fileExists) await this.importData();
+			if (fileExists) {
+				this.client.logger.info('[JEOPARDY] Importing from file...');
+				await this.importData();
+				this.client.logger.info('[JEOPARDY] Import complete!');
+			}
 		}
 		const cluesBefore = this.clues.length;
 		const latestSeason = this.seasons[this.seasons.length - 1];
