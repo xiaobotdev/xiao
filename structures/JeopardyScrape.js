@@ -119,6 +119,7 @@ module.exports = class JeopardyScrape {
 			}
 		}
 		this.exportData();
+		this.imported = true;
 		return this.clues.length - cluesBefore;
 	}
 };
