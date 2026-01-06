@@ -1,7 +1,9 @@
 const request = require('node-superfetch');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const { JSON: eJSON } = require('everything-json');
+const { parser } = require('stream-json');
+const { pick } = require('stream-json/filters/Pick');
+const { streamArray } = require('stream-json/streamers/StreamArray');
 const path = require('path');
 const { checkFileExists } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
@@ -11,8 +13,8 @@ module.exports = class JeopardyScrape {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.clues = [];
-		this.gameIDs = [];
-		this.seasons = [];
+		this.gameIDs = null;
+		this.seasons = null;
 		this.imported = false;
 	}
 
@@ -69,26 +71,23 @@ module.exports = class JeopardyScrape {
 
 	async importData() {
 		const read = await fs.promises.readFile(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
-		const file = await eJSON.parseAsync(read);
-		if (typeof file !== 'object' || Array.isArray(file)) return null;
-		if (!file.clues || !file.gameIDs || !file.seasons) return null;
+		const { seasons, gameIDs } = JSON.parse(read);
+		this.gameIDs = gameIDs;
+		this.seasons = seasons;
+		this.clues = await this.importClues();
 		this.imported = true;
-		for (const season of file.seasons) {
-			if (typeof season !== 'string') continue;
-			if (this.seasons.includes(season)) continue;
-			this.seasons.push(season);
-		}
-		for (const gameID of file.gameIDs) {
-			if (typeof gameID !== 'string') continue;
-			if (this.gameIDs.includes(gameID)) continue;
-			this.gameIDs.push(gameID);
-		}
-		for (const clue of file.clues) {
-			if (typeof clue !== 'object' || Array.isArray(clue)) continue;
-			if (this.clues.some(c => c.question === clue.question && c.answer === clue.answer)) continue;
-			this.clues.push(clue);
-		}
 		return file;
+	}
+
+	importClues() {
+		const pipeline = fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8'})
+			.pipe(parser())
+			.pipe(pick({ filter: 'clues' }))
+			.pipe(streamArray());
+		pipeline.on('data', ({ key, value }) => this.clues.push(value));
+		return new Promise(res => {
+			pipeline.on('end', () => res(this.clues));
+		});
 	}
 
 	exportData() {
