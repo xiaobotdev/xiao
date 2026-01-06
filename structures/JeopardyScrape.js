@@ -76,15 +76,15 @@ module.exports = class JeopardyScrape {
 		this.seasons = seasons;
 		this.clues = await this.importClues();
 		this.imported = true;
-		return file;
+		return this;
 	}
 
 	importClues() {
-		const pipeline = fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8'})
+		const pipeline = fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' })
 			.pipe(parser())
 			.pipe(pick({ filter: 'clues' }))
 			.pipe(streamArray());
-		pipeline.on('data', ({ key, value }) => this.clues.push(value));
+		pipeline.on('data', ({ value }) => this.clues.push(value));
 		return new Promise(res => {
 			pipeline.on('end', () => res(this.clues));
 		});
