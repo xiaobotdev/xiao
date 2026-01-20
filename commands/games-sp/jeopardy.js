@@ -55,8 +55,9 @@ module.exports = class JeopardyCommand extends Command {
 			connection.play(path.join(__dirname, '..', '..', 'assets', 'sounds', 'jeopardy.mp3'));
 			await reactIfAble(msg, this.client.user, '🔉');
 		}
-		const category = question.category ? question.category.toUpperCase() : '';
-		await msg.reply(`${category ? `The category is: **${category}**. ` : ''}30 seconds, good luck.`, {
+		const category = question.category ? `The category is: **${question.category.toUpperCase()}**. ` : '';
+		const value = question.value ? `For $${question.value}, ` : '';
+		await msg.reply(`${category}${value}30 seconds, good luck.`, {
 			files: [{ attachment: clueCard, name: 'clue-card.png' }]
 		});
 		const msgs = await msg.channel.awaitMessages({
