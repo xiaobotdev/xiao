@@ -104,7 +104,7 @@ module.exports = class ChessCommand extends Command {
 			if (user.bot) {
 				prevPieces = Object.assign({}, game.exportJson().pieces);
 				const now = new Date();
-				game.aiMove(1);
+				game.aiMove(2);
 				const timeTaken = new Date() - now;
 				if (gameState.turn === 'black') blackTime -= timeTaken - 5000;
 				if (gameState.turn === 'white') whiteTime -= timeTaken - 5000;
@@ -174,7 +174,7 @@ module.exports = class ChessCommand extends Command {
 					break;
 				}
 				if (turn.first().content.toLowerCase() === 'play for me') {
-					game.aiMove(0);
+					game.aiMove(1);
 				} else {
 					const choice = this.parseSAN(gameState, moves, turn.first().content.toUpperCase().match(turnRegex));
 					const pawnMoved = gameState.pieces[choice[0]].toUpperCase() === 'P';
