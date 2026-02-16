@@ -9,6 +9,7 @@ const FontManager = require('./fonts/FontManager');
 const PhoneManager = require('./phone/PhoneManager');
 const TimerManager = require('./remind/TimerManager');
 const PokemonStore = require('./pokemon/PokemonStore');
+const AvatarChanger = require('./AvatarChanger');
 const activities = require('./Activity');
 const { REPORT_CHANNEL_ID, JOIN_LEAVE_CHANNEL_ID } = process.env;
 
@@ -33,6 +34,7 @@ module.exports = class XiaoClient extends CommandClient {
 		this.phone = new PhoneManager(this);
 		this.tensorflow = new Tensorflow(this);
 		this.activities = activities;
+		this.avatarChanger = new AvatarChanger(this);
 		this.adultSiteList = null;
 	}
 
