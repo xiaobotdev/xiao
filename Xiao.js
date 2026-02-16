@@ -126,6 +126,9 @@ client.on('clientReady', async () => {
 		client.user.setActivity(text, { type: activity.type });
 	}, 60000);
 
+	// Interval to check for holidays and change the avatar if needed
+	client.avatarChanger.setInterval();
+
 	// Set up disabled commands
 	try {
 		const disabled = await client.redis.db.hgetall('disabled');
