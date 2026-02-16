@@ -28,7 +28,6 @@ module.exports = class AvatarChanger {
 		this.isWearingHat = true;
 		const image = await this.editAvatar(hat);
 		await this.client.user.setAvatar(image);
-		return;
 	}
 
 	setInterval() {
@@ -37,14 +36,14 @@ module.exports = class AvatarChanger {
 			now.getUTCFullYear(),
 			now.getUTCMonth(),
 			now.getUTCDate() + 1,
-			0 ,0, 0, 0
+			0, 0, 0, 0
 		));
 		const msUntilNext = midnight - now;
 		setTimeout(() => {
 			const today = new Date();
 			const holiday = this.isHoliday(today);
 			if (holiday) {
-				let hat = holiday.hat;
+				let { hat } = holiday;
 				if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
 				this.setAvatar(hat)
 					.then(() => this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`))
@@ -73,10 +72,10 @@ module.exports = class AvatarChanger {
 	isThanksgiving(day) {
 		const thanksgiving = this.getThanksgiving(day.getUTCFullYear());
 	  	return (
-    		day.getUTCFullYear() === thanksgiving.getUTCFullYear() &&
-    		day.getUTCMonth() === thanksgiving.getUTCMonth() &&
-    		day.getUTCDate() === thanksgiving.getUTCDate()
-  		);	
+    		day.getUTCFullYear() === thanksgiving.getUTCFullYear()
+    		&& day.getUTCMonth() === thanksgiving.getUTCMonth()
+    		&& day.getUTCDate() === thanksgiving.getUTCDate()
+  		);
 	}
 
 	getThanksgiving(year) {
