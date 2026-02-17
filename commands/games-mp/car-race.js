@@ -8,6 +8,8 @@ const { greyscale, motionBlur } = require('../../util/Canvas');
 const fs = require('fs');
 const cars = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars'))
 	.map(car => car.replace('.png', ''));
+const trails = fs.readdirSync(path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'trails'))
+	.map(trail => trail.replace('.png', ''));
 const words = ['go', 'zoom', 'drive', 'advance', 'pedal', 'vroom'];
 const difficulties = {
 	baby: 5000,
@@ -217,6 +219,11 @@ module.exports = class CarRaceCommand extends Command {
 		userData.car = await loadImage(
 			path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${car}.png`)
 		);
+		if (trails.includes(car)) {
+			userData.trail = await loadImage(
+				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'trails', `${car}.png`)
+			);
+		}
 		const userAvatar = await request.get(
 			msg.author.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true })
 		);
@@ -240,6 +247,11 @@ module.exports = class CarRaceCommand extends Command {
 			oppoData.car = await loadImage(
 				path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${oppoCarPick}.png`)
 			);
+			if (trails.includes(oppoCarPick)) {
+				userData.trail = await loadImage(
+					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'trails', `${oppoCarPick}.png`)
+				);
+			}
 		} else {
 			await msg.say(`${opponent}, do you accept this challenge?`);
 			const verification = await verify(msg.channel, opponent);
@@ -259,11 +271,21 @@ module.exports = class CarRaceCommand extends Command {
 				oppoData.car = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${choice}.png`)
 				);
+				if (trails.includes(choice)) {
+					userData.trail = await loadImage(
+						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'trails', `${choice}.png`)
+					);
+				}
 			} else {
 				const chosen = cars[Math.floor(Math.random() * cars.length)];
 				oppoData.car = await loadImage(
 					path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'cars', `${chosen}.png`)
 				);
+				if (trails.includes(chosen)) {
+					userData.trail = await loadImage(
+						path.join(__dirname, '..', '..', 'assets', 'images', 'car-race', 'trails', `${chosen}.png`)
+					);
+				}
 			}
 		}
 		const oppoAvatar = await request.get(opponent.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true }));
@@ -359,14 +381,34 @@ module.exports = class CarRaceCommand extends Command {
 		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
 		if (turnWin && oppoData.spaces > 0) {
 			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
+			if (oppoData.trail && oppoCarX > oppoData.car.width) {
+				for (let i = 0; i < oppoCarX; i += oppoData.trail.width) {
+					motionBlur(ctx, oppoData.trail, oppoCarX - i, 208, oppoData.trail.width, oppoData.trail.height);
+				}
+			}
 		} else {
 			ctx.drawImage(oppoData.car, oppoCarX, 208);
+			if (oppoData.trail && oppoCarX > oppoData.car.width) {
+				for (let i = 0; i < oppoCarX; i += oppoData.trail.width) {
+					ctx.drawImage(oppoData.trail, oppoCarX - i, 208);
+				}
+			}
 		}
 		const userCarX = userData.spaces < 7 ? -155 + (77 * userData.spaces) : bg.width - 155;
 		if (turnWin && userData.spaces > 0) {
 			motionBlur(ctx, userData.car, userCarX, 254, userData.car.width, userData.car.height);
+			if (userData.trail && userCarX > userData.car.width) {
+				for (let i = 0; i < userCarX; i += userData.trail.width) {
+					motionBlur(ctx, userData.trail, userCarX - i, 254, userData.trail.width, userData.trail.height);
+				}
+			}
 		} else {
 			ctx.drawImage(userData.car, userCarX, 254);
+			if (userData.trail && userCarX > userData.car.width) {
+				for (let i = 0; i < userCarX; i += userData.trail.width) {
+					ctx.drawImage(userData.trail, userCarX - i, 208);
+				}
+			}
 		}
 		if (win) {
 			const fireworks = await loadImage(
