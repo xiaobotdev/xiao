@@ -81,5 +81,9 @@ module.exports = [
 		text: client => `${formatNumber(client.registry.totalUses)} command uses`,
 		emoji: '🤖',
 		type: ActivityType.Custom
+	},
+	{
+		text: client => client.avatarChanger.holiday ? client.avatarChanger.holiday.activity : 'Just a normal day...',
+		type: ActivityType.Custom
 	}
 ];

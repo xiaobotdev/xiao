@@ -7,6 +7,7 @@ module.exports = class AvatarChanger {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.isWearingHat = false;
+		this.holiday = null;
 	}
 
 	async editAvatar(hat) {
@@ -42,13 +43,15 @@ module.exports = class AvatarChanger {
 		setTimeout(() => {
 			const today = new Date();
 			const holiday = this.isHoliday(today);
-			if (holiday) {
+			if (holiday && !this.holiday) {
+				this.holiday = holiday;
 				let { hat } = holiday;
 				if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
 				this.setAvatar(hat)
 					.then(() => this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`))
 					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
 			} else if (this.isWearingHat) {
+				this.holiday = null;
 				this.setAvatar()
 					.then(() => this.client.logger.info('[AVATAR] Reset avatar to default.'))
 					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
@@ -59,11 +62,16 @@ module.exports = class AvatarChanger {
 
 	isHoliday(day) {
 		for (const holiday of holidayList) {
-			if (day.getUTCDate() === holiday.day && day.getUTCMonth() === holiday.month - 1) return holiday;
+			if (day.getUTCMonth() !== holiday.month - 1) continue;
+			if (day.getUTCDate() >= holiday.startDay && day.getUTCDate() <= holiday.endDay) return holiday;
+			if (day.getUTCDate() === holiday.day) return holiday;
 		}
 		if (this.isThanksgiving(day)) {
 			return {
-				hat: 'pilgrim'
+				name: 'Thanksgiving',
+				hat: 'pilgrim',
+				month: day.getUTCMonth(),
+				day: day.getUTCDate()
 			};
 		}
 		return false;
