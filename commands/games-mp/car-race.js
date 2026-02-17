@@ -381,7 +381,7 @@ module.exports = class CarRaceCommand extends Command {
 		const oppoCarX = oppoData.spaces < 7 ? -155 + (77 * oppoData.spaces) : bg.width - 155;
 		if (turnWin && oppoData.spaces > 0) {
 			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
-			if (oppoData.trail && 0) {
+			if (oppoData.trail && oppoCarX > 0) {
 				for (let x = oppoCarX - oppoData.trail.width; x > -oppoData.trail.width; x -= oppoData.trail.width) {
 					motionBlur(ctx, oppoData.trail, x, 208, oppoData.trail.width, oppoData.trail.height);
 				}
