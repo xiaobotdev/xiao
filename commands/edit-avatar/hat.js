@@ -39,6 +39,16 @@ module.exports = class HatCommand extends Command {
 					name: 'Becel',
 					url: 'https://www.becel.ca/en-ca',
 					reason: 'Becel Hat Image'
+				},
+				{
+					name: 'Nintendo',
+					url: 'https://www.nintendo.com/',
+					reason: 'Mario Hat Image'
+				},
+				{
+					name: 'Star Wars',
+					url: 'https://www.starwars.com/',
+					reason: 'Yoda Hat Image'
 				}
 			],
 			args: [

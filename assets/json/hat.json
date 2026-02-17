@@ -78,5 +78,20 @@
 		"file": "witch.png",
 		"comment": "Whatcha got in that cauldron, {{user}}?",
 		"commentMe": "Ahahahaha! Want a taste of my potion?"
+	},
+	"mario": {
+		"file": "mario.png",
+		"comment": "It's-a-you, Mario!",
+		"commentMe": "It's-a-me, Mario!"
+	},
+	"yoda": {
+		"file": "yoda.png",
+		"comment": "May the force be with you.",
+		"commentMe": "May the force be with... Me."
+	},
+	"superhero": {
+		"file": "superhero.png",
+		"comment": "What's your superpower, {{user}}?",
+		"commentMe": "Oh my! You know my secret identity!"
 	}
 }

@@ -55,5 +55,26 @@
 		"month": 3,
 		"day": 17,
 		"activity": "Make sure you wear green today!"
+	},
+	{
+		"name": "Star Wars Day",
+		"hat": "yoda",
+		"month": 5,
+		"day": 4,
+		"activity": "May the fourth be with you."
+	},
+	{
+		"name": "Batman Day",
+		"hat": "superhero",
+		"month": 9,
+		"day": 15,
+		"activity": "I'm Batman."
+	},
+	{
+		"name": "Mario Day",
+		"hat": "mario",
+		"month": 3,
+		"day": 10,
+		"activity": "It's-a-me, Mario!"
 	}
 ]
