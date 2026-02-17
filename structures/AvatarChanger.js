@@ -7,7 +7,6 @@ module.exports = class AvatarChanger {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.isWearingHat = false;
-		this.holiday = null;
 	}
 
 	async editAvatar(hat) {
@@ -44,20 +43,23 @@ module.exports = class AvatarChanger {
 			const today = new Date();
 			const holiday = this.isHoliday(today);
 			if (holiday && !this.holiday) {
-				this.holiday = holiday;
 				let { hat } = holiday;
 				if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
 				this.setAvatar(hat)
 					.then(() => this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`))
 					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
 			} else if (this.isWearingHat) {
-				this.holiday = null;
 				this.setAvatar()
 					.then(() => this.client.logger.info('[AVATAR] Reset avatar to default.'))
 					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
 			}
 			this.setInterval();
 		}, msUntilNext);
+	}
+
+	get holiday() {
+		const today = new Date();
+		return this.isHoliday(today) || null;
 	}
 
 	isHoliday(day) {
