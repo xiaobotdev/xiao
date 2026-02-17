@@ -382,14 +382,14 @@ module.exports = class CarRaceCommand extends Command {
 		if (turnWin && oppoData.spaces > 0) {
 			motionBlur(ctx, oppoData.car, oppoCarX, 208, oppoData.car.width, oppoData.car.height);
 			if (oppoData.trail && oppoCarX > oppoData.car.width) {
-				for (let x = oppoCarX - oppoData.trail.width; x < -oppoData.trail.width; x -= oppoData.trail.width) {
+				for (let x = oppoCarX - oppoData.trail.width; x > -oppoData.trail.width; x -= oppoData.trail.width) {
 					motionBlur(ctx, oppoData.trail, x, 208, oppoData.trail.width, oppoData.trail.height);
 				}
 			}
 		} else {
 			ctx.drawImage(oppoData.car, oppoCarX, 208);
 			if (oppoData.trail && oppoCarX > oppoData.car.width) {
-				for (let x = oppoCarX - oppoData.trail.width; x < -oppoData.trail.width; x -= oppoData.trail.width) {
+				for (let x = oppoCarX - oppoData.trail.width; x > -oppoData.trail.width; x -= oppoData.trail.width) {
 					ctx.drawImage(oppoData.trail, x, 208);
 				}
 			}
@@ -398,14 +398,14 @@ module.exports = class CarRaceCommand extends Command {
 		if (turnWin && userData.spaces > 0) {
 			motionBlur(ctx, userData.car, userCarX, 254, userData.car.width, userData.car.height);
 			if (userData.trail && userCarX > userData.car.width) {
-				for (let x = userCarX - userData.trail.width; x < -userData.trail.width; x -= userData.trail.width) {
+				for (let x = userCarX - userData.trail.width; x > -userData.trail.width; x -= userData.trail.width) {
 					motionBlur(ctx, userData.trail, x, 254, userData.trail.width, userData.trail.height);
 				}
 			}
 		} else {
 			ctx.drawImage(userData.car, userCarX, 254);
 			if (userData.trail && userCarX > userData.car.width) {
-				for (let x = userCarX - userData.trail.width; x < -userData.trail.width; x -= userData.trail.width) {
+				for (let x = userCarX - userData.trail.width; x > -userData.trail.width; x -= userData.trail.width) {
 					ctx.drawImage(userData.trail, x, 208);
 				}
 			}
