@@ -3,54 +3,57 @@
 		"name": "New Year's Day",
 		"hat": "birthday",
 		"month": 1,
-		"day": 1
+		"day": 1,
+		"activity": "Happy New Year!"
 	},
 	{
 		"name": "Xiao's Birthday",
 		"hat": "birthday",
 		"month": 2,
-		"day": 6
+		"day": 6,
+		"activity": "Today's my birthday!"
 	},
 	{
 		"name": "Pokémon Day",
 		"hat": "ash",
 		"month": 2,
-		"day": 27
+		"day": 27,
+		"activity": "Happy Pokémon Day!"
 	},
 	{
 		"name": "Christmas",
 		"hat": "christmas",
 		"month": 12,
-		"day": 25
+		"startDay": 21,
+		"endDay": 26,
+		"activity": "Merry Christmas!"
 	},
 	{
 		"name": "Halloween",
 		"hat": ["witch", "pirate", "devil"],
 		"month": 10,
-		"day": 31
+		"day": 31,
+		"activity": "Boo! Happy Halloween!"
 	},
 	{
 		"name": "Talk Like a Pirate Day",
 		"hat": "pirate",
 		"month": 9,
-		"day": 19
+		"day": 19,
+		"activity": "Arr, it be Talk Like a Pirate Day!"
 	},
 	{
 		"name": "April Fools Day",
 		"hat": "disguise",
 		"month": 4,
-		"day": 1
+		"day": 1,
+		"activity": "April Fools!"
 	},
 	{
 		"name": "St. Patrick's Day",
 		"hat": "leprechaun",
 		"month": 3,
-		"day": 17
-	},
-	{
-		"name": "test",
-		"hat": "dunce",
-		"month": 2,
-		"day": 17
+		"day": 17,
+		"activity": "Make sure you wear green today!"
 	}
 ]
