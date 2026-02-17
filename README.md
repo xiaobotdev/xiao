@@ -115,7 +115,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 516
+Total: 515
 
 ### Utility:
 
@@ -327,7 +327,6 @@ Total: 516
 * **is-it-down:** Determines if a website is down or not.
 * **levenshtein:** Determines the levenshtein distance between two strings.
 * **name-gender:** Determines the gender of a name.
-* **nsfw-image:** Determines if an image is NSFW.
 * **nsfw-url:** Determines if a URL is NSFW.
 * **parse-time:** Analyzes the time duration you provide and gives the result.
 * **read-qr-code:** Reads a QR Code.
@@ -728,7 +727,6 @@ Total: 516
 * [moment-timezone](https://www.npmjs.com/package/moment-timezone)
 * [neopet-image-finder](https://www.npmjs.com/package/neopet-image-finder)
 * [node-superfetch](https://www.npmjs.com/package/node-superfetch)
-* [nsfwjs](https://www.npmjs.com/package/nsfwjs)
 * [ntcjs](https://www.npmjs.com/package/ntcjs)
 * [parse-domain](https://www.npmjs.com/package/parse-domain)
 * [pokersolver](https://www.npmjs.com/package/pokersolver)

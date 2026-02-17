@@ -46,12 +46,7 @@ module.exports = class WikipediaCommand extends Command {
 			});
 		const data = body.query.pages[0];
 		if (data.missing) return msg.say('Could not find any results.');
-		let thumbnail = data.thumbnail ? data.thumbnail.source : null;
-		if (!msg.channel.nsfw && thumbnail) {
-			const img = await request.get(thumbnail);
-			const nsfw = await this.client.tensorflow.isImageNSFW(img.body);
-			if (nsfw) thumbnail = null;
-		}
+		const thumbnail = data.thumbnail ? data.thumbnail.source : null;
 		let fact = data.extract;
 		if (fact.length > 200) {
 			const facts = fact.split('.');

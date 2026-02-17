@@ -256,14 +256,6 @@ client.on('clientReady', async () => {
 		client.logger.error(`[ADULT SITES] Failed to fetch list\n${err.stack}`);
 	}
 
-	// Set up nsfwjs
-	try {
-		await client.tensorflow.loadNSFWJS();
-		client.logger.info('[NSFWJS] Loaded NSFWJS.');
-	} catch (err) {
-		client.logger.error(`[NSFWJS] Failed to load NSFWJS\n${err.stack}`);
-	}
-
 	// Set up face detection
 	try {
 		await client.tensorflow.loadFaceDetector();
