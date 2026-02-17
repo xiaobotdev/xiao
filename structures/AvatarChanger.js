@@ -21,11 +21,13 @@ module.exports = class AvatarChanger {
 
 	async setAvatar(hat) {
 		if (!hat) {
+			await this.client.redis.db.set('hat', false);
 			this.isWearingHat = false;
 			await this.client.user.setAvatar(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
 			return;
 		}
 		this.isWearingHat = true;
+		await this.client.redis.db.set('hat', true);
 		const image = await this.editAvatar(hat);
 		await this.client.user.setAvatar(image);
 	}

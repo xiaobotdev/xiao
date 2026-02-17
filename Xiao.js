@@ -127,6 +127,8 @@ client.on('clientReady', async () => {
 	}, 60000);
 
 	// Interval to check for holidays and change the avatar if needed
+	const isWearingHat = await client.redis.db.get('hat');
+	client.avatarChanger.isWearingHat = isWearingHat;
 	client.avatarChanger.setInterval();
 
 	// Set up disabled commands
