@@ -71,7 +71,8 @@ module.exports = class AvatarChanger {
 				name: 'Thanksgiving',
 				hat: 'pilgrim',
 				month: day.getUTCMonth(),
-				day: day.getUTCDate()
+				day: day.getUTCDate(),
+				activity: 'Happy Thanksgiving!'
 			};
 		}
 		return false;
