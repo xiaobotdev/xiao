@@ -130,6 +130,7 @@ client.on('clientReady', async () => {
 	const isWearingHat = await client.redis.db.get('hat');
 	if (!isWearingHat) await client.redis.db.set('hat', false);
 	client.avatarChanger.isWearingHat = isWearingHat === 'true';
+	await client.avatarChanger.checkForUpdates();
 	client.avatarChanger.setInterval();
 
 	// Set up disabled commands
