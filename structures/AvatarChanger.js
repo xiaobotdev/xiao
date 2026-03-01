@@ -32,6 +32,28 @@ module.exports = class AvatarChanger {
 		await this.client.user.setAvatar(image);
 	}
 
+	async checkForUpdates() {
+		const today = new Date();
+		const holiday = this.isHoliday(today);
+		if (holiday && !this.isWearingHat) {
+			let { hat } = holiday;
+			if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
+			try {
+				await this.setAvatar(hat);
+				this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`);
+			} catch (err) {
+				this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`);
+			}
+		} else if (this.isWearingHat && !holiday) {
+			try {
+				await this.setAvatar();
+				this.client.logger.info('[AVATAR] Reset avatar to default.');
+			} catch (err) {
+				this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`);
+			}
+		}
+	}
+
 	setInterval() {
 		const now = new Date();
 		const midnight = new Date(Date.UTC(
@@ -42,19 +64,7 @@ module.exports = class AvatarChanger {
 		));
 		const msUntilNext = midnight - now;
 		setTimeout(() => {
-			const today = new Date();
-			const holiday = this.isHoliday(today);
-			if (holiday && !this.holiday) {
-				let { hat } = holiday;
-				if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
-				this.setAvatar(hat)
-					.then(() => this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`))
-					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
-			} else if (this.isWearingHat) {
-				this.setAvatar()
-					.then(() => this.client.logger.info('[AVATAR] Reset avatar to default.'))
-					.catch(err => this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`));
-			}
+			this.checkForUpdates();
 			this.setInterval();
 		}, msUntilNext);
 	}
