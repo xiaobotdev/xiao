@@ -25,8 +25,8 @@ module.exports = class Command {
 		this.sendTyping = typeof options.sendTyping === 'undefined' ? true : Boolean(options.sendTyping);
 		this.credit = options.credit || [];
 		this.credit.push({
-			name: 'Lily is Silly',
-			url: 'https://github.com/lilyissillyyy',
+			name: 'Xiao Dev',
+			url: 'https://github.com/xiaobotdev',
 			reason: 'Code'
 		});
 		this.uses = 0;
