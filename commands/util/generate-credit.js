@@ -26,7 +26,7 @@ module.exports = class GenerateCreditCommand extends Command {
 				if (!commands.size) return null;
 				return commands.map(c => {
 					const credits = c.credit
-						.filter(cred => cred.name !== 'Lily is Silly')
+						.filter(cred => cred.name !== 'Xiao Dev')
 						.map(cred => {
 							const reason = cred.reasonURL ? embedURL(cred.reason, cred.reasonURL) : cred.reason;
 							return `${embedURL(cred.name, cred.url)} (${reason})`;

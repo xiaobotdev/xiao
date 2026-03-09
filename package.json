@@ -1,6 +1,6 @@
 {
 	"name": "xiao",
-	"version": "160.0.2",
+	"version": "160.0.3",
 	"description": "Your personal server companion.",
 	"main": "Xiao.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/lilyissillyyy/xiao.git"
+		"url": "git+https://github.com/xiaobotdev/xiao.git"
 	},
 	"keywords": [
 		"bot",
@@ -19,12 +19,12 @@
 		"discord-bot",
 		"discord-js"
 	],
-	"author": "lilyissillyyy <lilyodendahl@gmail.com>",
+	"author": "xiaobotdev",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/lilyissillyyy/xiao/issues"
+		"url": "https://github.com/xiaobotdev/xiao/issues"
 	},
-	"homepage": "https://github.com/lilyissillyyy/xiao#readme",
+	"homepage": "https://github.com/xiaobotdev/xiao#readme",
 	"engines": {
 		"node": ">=24"
 	},
