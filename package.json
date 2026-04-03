@@ -76,7 +76,7 @@
 		"semver": "^7.7.4",
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^3.0.1",
-		"stream-json": "^1.9.1",
+		"stream-json": "^2.1.0",
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twitter-openapi-typescript": "^0.0.55",
