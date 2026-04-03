@@ -18,7 +18,7 @@ module.exports = class HoroscopeCommand extends Command {
 					name: 'astrology.TV',
 					url: 'https://astrology.tv/',
 					reason: 'Horoscope Data',
-					reasonURL: 'https://astrology.tv/horoscope/daily/'
+					reasonURL: 'https://astrology.tv/horoscope/'
 				}
 			],
 			args: [
@@ -37,8 +37,8 @@ module.exports = class HoroscopeCommand extends Command {
 		const embed = new EmbedBuilder()
 			.setColor(0x9797FF)
 			.setTitle(`Horoscope for ${firstUpperCase(sign)}...`)
-			.setURL(`https://astrology.tv/horoscope/signs/${sign}/`)
-			.setFooter({ text: '© Kelli Fox, The Astrologer' })
+			.setURL(`https://astrology.tv/horoscope/daily/${sign}/`)
+			.setFooter({ text: '© 2026 AstrologyTV. All rights reserved.' })
 			.setThumbnail(this.getImageURL(sign))
 			.setTimestamp()
 			.setDescription(horoscope);
@@ -46,12 +46,12 @@ module.exports = class HoroscopeCommand extends Command {
 	}
 
 	async fetchHoroscope(sign) {
-		const { text } = await request.get(`https://astrology.tv/horoscope/signs/${sign}/`);
+		const { text } = await request.get(`https://astrology.tv/horoscope/daily/${sign}/`);
 		const $ = cheerio.load(text);
-		return $('div[class="ct-text-block day-tabs-content_horoscope"]').eq(1).text();
+		return $('section[id="today"]').children().eq(1).text();
 	}
 
 	getImageURL(sign) {
-		return `https://astrology.tv/wp-content/uploads/2019/07/astrology_tv_${sign}_cover-768x768.jpg`;
+		return `https://astrology.tv/images/astrology_tv_${sign}_cover-480x480.jpg`;
 	}
 };
