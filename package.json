@@ -33,7 +33,7 @@
 		"@discordjs/voice": "^0.19.2",
 		"@dotenvx/dotenvx": "^1.59.1",
 		"@mediapipe/face_detection": "^0.4.1646425229",
-		"@napi-rs/canvas": "^0.1.97",
+		"@napi-rs/canvas": "^1.0.0",
 		"@skyra/gifenc": "^1.0.1",
 		"@snazzah/davey": "^0.1.11",
 		"@tensorflow-models/face-detection": "^1.0.3",
