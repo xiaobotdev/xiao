@@ -129,7 +129,7 @@ module.exports = class AnimeCommand extends Command {
 			.addField('❯ Season', anime.season ? `${seasons[anime.season]} ${anime.startDate.year}` : '???', true)
 			.addField('❯ Average Score', anime.averageScore ? `${anime.averageScore}%` : '???', true)
 			.addField(`❯ MAL Score`, malScore ? embedURL(malScore, malURL) : '???', true)
-			.addField(`❯ ${ANILIST_USERNAME}'s Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
+			.addField(`❯ My Developer's Score`, entry && entry.score ? `${entry.score}/10` : '???', true)
 			.addField('❯ External Links', anime.externalLinks.length
 				? anime.externalLinks.map(link => embedURL(link.site, link.url)).join(', ')
 				: 'None');
