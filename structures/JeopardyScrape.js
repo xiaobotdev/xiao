@@ -4,6 +4,7 @@ const fs = require('fs');
 const { parser } = require('stream-json');
 const { pick } = require('stream-json/filters/pick.js');
 const { streamArray } = require('stream-json/streamers/stream-array.js');
+const { chain } = require('stream-chain');
 const path = require('path');
 const { checkFileExists } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
@@ -80,10 +81,12 @@ module.exports = class JeopardyScrape {
 	}
 
 	importClues() {
-		const pipeline = fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' })
-			.pipe(parser())
-			.pipe(pick({ filter: 'clues' }))
-			.pipe(streamArray());
+		const pipeline = chain([
+			fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' }),
+			parser(),
+			pick({ filter: 'clues' }),
+			streamArray()
+		]);
 		pipeline.on('data', ({ value }) => this.clues.push(value));
 		return new Promise(res => {
 			pipeline.on('end', () => res(this.clues));
