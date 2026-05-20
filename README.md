@@ -136,7 +136,6 @@ Total: 516
 * **report-abuse:** Shortcut to report abuse.
 * **report-bug:** Shortcut to report a bug.
 * **suggest:** Shortcut to suggest new features.
-* **unknown-command:** Displays help information for when an unknown command is used.
 * **uses:** Responds with a command's usage stats.
 
 ### Discord Information:
@@ -549,7 +548,7 @@ Total: 516
 * **genie-rules:** Sends a "There are 4 rules" meme with the text of your choice.
 * **girl-worth-fighting-for:** Draws an image or a user's avatar as the object of Ling's affection.
 * **gru-plan:** Sends a Gru's Plan meme with steps of your choice.
-* **holy-crap-lois:** Draws an image or a user\'s avatar at the door to Peter Griffin's house.
+* **holy-crap-lois:** Draws an image or a user's avatar at the door to Peter Griffin's house.
 * **i-cant-believe:** Sends a "I Can't believe it's not butter!" meme with the text of your choice.
 * **i-fear-no-man:** Sends a "I fear no man" meme with the text of your choice.
 * **if-those-kids-could-read:** Sends a "If those kids could read, they'd be very upset" meme with the text of your choice.
@@ -689,6 +688,7 @@ Total: 516
 ### NPM Packages
 * [@discordjs/opus](https://www.npmjs.com/package/@discordjs/opus)
 * [@discordjs/voice](https://www.npmjs.com/package/@discordjs/voice)
+* [@dotenvx/dotenvx](https://www.npmjs.com/package/@dotenvx/dotenvx)
 * [@mediapipe/face_detection](https://www.npmjs.com/package/@mediapipe/face_detection)
 * [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas)
 * [@skyra/gifenc](https://www.npmjs.com/package/@skyra/gifenc)
@@ -707,7 +707,6 @@ Total: 516
 * [custom-translate](https://www.npmjs.com/package/custom-translate)
 * [didyoumean2](https://www.npmjs.com/package/didyoumean2)
 * [discord.js](https://www.npmjs.com/package/discord.js)
-* [dotenv](https://www.npmjs.com/package/dotenv)
 * [emoji-regex](https://www.npmjs.com/package/emoji-regex)
 * [fen-validator](https://www.npmjs.com/package/fen-validator)
 * [font-finder](https://www.npmjs.com/package/font-finder)
@@ -870,7 +869,7 @@ Total: 516
 * **florida-man:**
    - [floridamanbirthday.org](https://floridamanbirthday.org/) (News Data)
 * **horoscope:**
-   - [astrology.TV](https://astrology.tv/) ([Horoscope Data](https://astrology.tv/horoscope/daily/))
+   - [astrology.TV](https://astrology.tv/) ([Horoscope Data](https://astrology.tv/horoscope/))
 * **neko-atsume-password:**
    - [Neko Atsume: Kitty Collector](http://nekoatsume.com/en/) (API, Original Game)
 * **time:**
@@ -1051,6 +1050,7 @@ Total: 516
 * **tarot:**
    - [dariusk](https://github.com/dariusk) ([Tarot Reading Data](https://github.com/dariusk/corpora/blob/master/data/divination/tarot_interpretations.json))
    - [Tarot Card Meanings](https://www.tarotcardmeanings.net/) ([Images](https://www.tarotcardmeanings.net/tarotcards.htm))
+   - [u/BaffleBlend](https://www.reddit.com/user/BaffleBlend/) ([Happy Squirrel Image](https://www.reddit.com/r/tarot/comments/1ir71t1/))
    - [20th Century Fox](https://www.foxmovies.com/) ([Original "The Simpsons" Show, "Happy Squirrel" Concept](http://www.simpsonsworld.com/))
 * **true-or-false:**
    - [Open Trivia DB](https://opentdb.com/) ([API](https://opentdb.com/api_config.php))
@@ -1247,6 +1247,8 @@ Total: 516
    - [Pokémon](https://www.pokemon.com/us/) (Ash Hat Original Anime)
    - [KONOSUBA -God's blessing on this wonderful world!](http://konosuba.com/) (Megumin Hat Original Anime)
    - [Becel](https://www.becel.ca/en-ca) (Becel Hat Image)
+   - [Nintendo](https://www.nintendo.com/) (Mario Hat Image)
+   - [Star Wars](https://www.starwars.com/) (Yoda Hat Image)
 * **he-lives-in-you:**
    - [Disney](https://www.disney.com/) ([Image, Original "The Lion King" Movie](https://movies.disney.com/the-lion-king))
 * **i-have-the-power:**
