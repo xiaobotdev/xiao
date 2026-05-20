@@ -77,7 +77,7 @@ module.exports = class NamePopularityCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		for (let year = Math.ceil(minYear / 20) * 20; year <= maxYear; year += 20) {
-    		const x = margin + (((year - minYear) / (maxYear - minYear)) * (width - margin * 2));
+    		const x = margin + (((year - minYear) / (maxYear - minYear)) * (width - (margin * 2)));
     		ctx.fillText(year.toString(), x, (height - margin) + 10);
 		}
 		ctx.textAlign = 'right';
@@ -85,7 +85,7 @@ module.exports = class NamePopularityCommand extends Command {
 		const steps = 10;
 		for (let i = 0; i <= steps; i++) {
    			const value = (maxValue / steps) * i;
-    		const y = height - margin - ((value / maxValue) * (height - margin * 2));
+    		const y = height - margin - ((value / maxValue) * (height - (margin * 2)));
     		ctx.fillText(value.toFixed(1), margin - 10, y);
 		}
 		ctx.save();
