@@ -77,15 +77,15 @@ module.exports = class NamePopularityCommand extends Command {
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'top';
 		for (let year = Math.ceil(minYear / 20) * 20; year <= maxYear; year += 20) {
-    		const x = margin + ((year - minYear) / (maxYear - minYear)) * (width - margin * 2);
-    		ctx.fillText(year.toString(), x, height - margin + 10);
+    		const x = margin + (((year - minYear) / (maxYear - minYear)) * (width - margin * 2));
+    		ctx.fillText(year.toString(), x, (height - margin) + 10);
 		}
 		ctx.textAlign = 'right';
 		ctx.textBaseline = 'middle';
 		const steps = 10;
 		for (let i = 0; i <= steps; i++) {
    			const value = (maxValue / steps) * i;
-    		const y = height - margin - (value / maxValue) * (height - margin * 2);
+    		const y = height - margin - ((value / maxValue) * (height - margin * 2));
     		ctx.fillText(value.toFixed(1), margin - 10, y);
 		}
 		ctx.save();
@@ -103,10 +103,10 @@ module.exports = class NamePopularityCommand extends Command {
 	}
 
 	drawArea(ctx, years, values, color, width, height, margin, minYear, maxYear, maxValue) {
-		const graphWidth = width - margin * 2;
-		const graphHeight = height - margin * 2;
-		const xScale = year => margin + ((year - minYear) / (maxYear - minYear)) * graphWidth;
-		const yScale = value => height - margin - (value / maxValue) * graphHeight;
+		const graphWidth = width - (margin * 2);
+		const graphHeight = height - (margin * 2);
+		const xScale = year => margin + (((year - minYear) / (maxYear - minYear)) * graphWidth);
+		const yScale = value => height - margin - ((value / maxValue) * graphHeight);
 		ctx.beginPath();
 		ctx.moveTo(xScale(years[0]), yScale(values[0]));
 		years.forEach((year, i) => {
