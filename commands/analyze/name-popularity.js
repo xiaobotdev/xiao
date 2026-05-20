@@ -97,7 +97,8 @@ module.exports = class NamePopularityCommand extends Command {
 		ctx.fillStyle = 'black';
 		ctx.fillText('Popularity per thousand', 0, 5);
 		ctx.restore();
-    	return msg.say('_Note: Popularity data is for the United States._', {
+		const link = `https://nametrends.net/name.php?name=${name.toLowerCase()}`;
+    	return msg.say(`_Note: Popularity data is for the United States._\n[View on NameTrends.net](${link})`, {
 			files: [{ attachment: canvas.toBuffer('image/png'), name: 'chart.png' }]
 		});
 	}
