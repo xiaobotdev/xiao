@@ -113,7 +113,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 515
+Total: 516
 
 ### Utility:
 
@@ -325,6 +325,7 @@ Total: 515
 * **is-it-down:** Determines if a website is down or not.
 * **levenshtein:** Determines the levenshtein distance between two strings.
 * **name-gender:** Determines the gender of a name.
+* **name-popularity:** Responds with how popular a name is in the United States.
 * **nsfw-url:** Determines if a URL is NSFW.
 * **parse-time:** Analyzes the time duration you provide and gives the result.
 * **read-qr-code:** Reads a QR Code.
@@ -735,6 +736,7 @@ Total: 515
 * [sherlockjs](https://www.npmjs.com/package/sherlockjs)
 * [sodium-native](https://www.npmjs.com/package/sodium-native)
 * [stackblur-canvas](https://www.npmjs.com/package/stackblur-canvas)
+* [stream-chain](https://www.npmjs.com/package/stream-chain)
 * [stream-json](https://www.npmjs.com/package/stream-json)
 * [text-diff](https://www.npmjs.com/package/text-diff)
 * [tictactoe-minimax-ai](https://www.npmjs.com/package/tictactoe-minimax-ai)
@@ -993,6 +995,9 @@ Total: 515
    - [Is It Down Right Now?](https://www.isitdownrightnow.com/) (API)
 * **name-gender:**
    - [Genderize.io](https://genderize.io/) (API)
+* **name-popularity:**
+   - [NameTrends.net](https://nametrends.net/) (API)
+   - [Google](https://www.google.com/) ([Noto Font](https://fonts.google.com/noto))
 * **scrabble-score:**
    - [Hasbro](https://shop.hasbro.com/en-us) ([Original "Scrabble" Game](https://shop.hasbro.com/en-us/scrabble-words))
 * **screenshot:**
