@@ -77,6 +77,8 @@ client.on('clientReady', async () => {
 	// Make temp directories
 	const tmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp'));
 	if (!tmpFolderExists) await mkdir(path.join(__dirname, 'tmp'));
+	const dataFolderExists = await checkFileExists(path.join(__dirname, 'data'));
+	if (!dataFolderExists) await mkdir(path.join(__dirname, 'data'));
 	const decTalkTmpFolderExists = await checkFileExists(path.join(__dirname, 'tmp', 'dec-talk'));
 	if (!decTalkTmpFolderExists) await mkdir(path.join(__dirname, 'tmp', 'dec-talk'));
 

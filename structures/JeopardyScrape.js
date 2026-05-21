@@ -71,7 +71,7 @@ module.exports = class JeopardyScrape {
 	}
 
 	async importData() {
-		const read = await fs.promises.readFile(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' });
+		const read = await fs.promises.readFile(path.join(__dirname, '..', 'data', 'jeopardy.json'), { encoding: 'utf8' });
 		const { seasons, gameIDs } = JSON.parse(read);
 		this.gameIDs = gameIDs;
 		this.seasons = seasons;
@@ -82,7 +82,7 @@ module.exports = class JeopardyScrape {
 
 	importClues() {
 		const pipeline = chain([
-			fs.createReadStream(path.join(__dirname, '..', 'jeopardy.json'), { encoding: 'utf8' }),
+			fs.createReadStream(path.join(__dirname, '..', 'data', 'jeopardy.json'), { encoding: 'utf8' }),
 			parser(),
 			pick({ filter: 'clues' }),
 			streamArray()
@@ -99,13 +99,13 @@ module.exports = class JeopardyScrape {
 			gameIDs: this.gameIDs,
 			seasons: this.seasons
 		}));
-		fs.writeFileSync(path.join(__dirname, '..', 'jeopardy.json'), buf, { encoding: 'utf8' });
+		fs.writeFileSync(path.join(__dirname, '..', 'data', 'jeopardy.json'), buf, { encoding: 'utf8' });
 		return buf;
 	}
 
 	async checkForUpdates() {
 		if (!this.imported) {
-			const fileExists = await checkFileExists(path.join(__dirname, '..', 'jeopardy.json'));
+			const fileExists = await checkFileExists(path.join(__dirname, '..', 'data', 'jeopardy.json'));
 			if (fileExists) {
 				this.client.logger.info('[JEOPARDY] Importing from file...');
 				await this.importData();

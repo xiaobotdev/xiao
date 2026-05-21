@@ -11,7 +11,6 @@ module.exports = class ClocCommand extends Command {
 			name: 'cloc',
 			group: 'util-public',
 			description: 'Responds with the bot\'s code line count.',
-			guarded: true,
 			clientPermissions: [PermissionFlagsBits.EmbedLinks]
 		});
 
@@ -36,7 +35,7 @@ module.exports = class ClocCommand extends Command {
 			path.join(__dirname, '..', '..', 'node_modules', '.bin', 'cloc'),
 			[
 				'--json',
-				'--exclude-dir=node_modules',
+				'--exclude-dir=node_modules,data',
 				path.join(__dirname, '..', '..')
 			]
 		);

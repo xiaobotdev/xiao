@@ -157,7 +157,7 @@ module.exports = class CommandClient extends Client {
 	}
 
 	importBlacklist() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'blacklist.json'), { encoding: 'utf8' });
+		const read = fs.readFileSync(path.join(__dirname, '..', 'data', 'blacklist.json'), { encoding: 'utf8' });
 		const file = JSON.parse(read);
 		if (typeof file !== 'object' || Array.isArray(file)) return null;
 		if (!file.guild || !file.user) return null;
@@ -191,12 +191,12 @@ module.exports = class CommandClient extends Client {
 		}
 		text += '\n	]\n}\n';
 		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'blacklist.json'), buf, { encoding: 'utf8' });
+		fs.writeFileSync(path.join(__dirname, '..', 'data', 'blacklist.json'), buf, { encoding: 'utf8' });
 		return buf;
 	}
 
 	importCommandLeaderboard(add = false) {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'data', 'command-leaderboard.json'), {
 			encoding: 'utf8'
 		});
 		const file = JSON.parse(read);
@@ -221,14 +221,14 @@ module.exports = class CommandClient extends Client {
 		text = text.slice(0, -1);
 		text += '\n}\n';
 		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'command-leaderboard.json'), buf, {
+		fs.writeFileSync(path.join(__dirname, '..', 'data', 'command-leaderboard.json'), buf, {
 			encoding: 'utf8'
 		});
 		return buf;
 	}
 
 	importLastRun() {
-		const read = fs.readFileSync(path.join(__dirname, '..', 'command-last-run.json'), {
+		const read = fs.readFileSync(path.join(__dirname, '..', 'data', 'command-last-run.json'), {
 			encoding: 'utf8'
 		});
 		const file = JSON.parse(read);
@@ -254,7 +254,7 @@ module.exports = class CommandClient extends Client {
 		text = text.slice(0, -1);
 		text += '\n}\n';
 		const buf = Buffer.from(text);
-		fs.writeFileSync(path.join(__dirname, '..', 'command-last-run.json'), buf, {
+		fs.writeFileSync(path.join(__dirname, '..', 'data', 'command-last-run.json'), buf, {
 			encoding: 'utf8'
 		});
 		return buf;

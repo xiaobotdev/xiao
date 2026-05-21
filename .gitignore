@@ -15,10 +15,7 @@ tmp/
 .env
 .env.keys
 config.json
-command-leaderboard.json
-command-last-run.json
-blacklist.json
-jeopardy.json
+data/
 
 # Mac Files
 .DS_Store
