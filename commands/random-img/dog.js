@@ -20,7 +20,7 @@ module.exports = class DogCommand extends Command {
 				},
 				{
 					name: 'Dog API',
-					url: 'https://kinduff.github.io/dog-api/',
+					url: 'https://dogapi.dog/',
 					reason: 'API'
 				}
 			]
