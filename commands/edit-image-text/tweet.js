@@ -311,21 +311,21 @@ module.exports = class TweetCommand extends Command {
 			}
 			const guestClient = await api.getGuestClient();
 			const { data } = await guestClient.getUserApi().getUserByScreenName({ screenName: user });
-			const body = data.user.legacy;
-			const avatarRes = await request.get(body.profileImageUrlHttps);
+			const body = data.user;
+			const avatarRes = await request.get(body.avatar.imageUrl);
 			let checkType = null;
-			if (body.verifiedType === 'Government') checkType = 'gov';
-			else if (body.verifiedType === 'Business') checkType = 'business';
-			else if (data.user.isBlueVerified) checkType = 'blue';
-			const label = data.user.affiliatesHighlightedLabel.label?.badge?.url;
+			if (body.verification.verifiedType === 'Government') checkType = 'gov';
+			else if (body.verification.verifiedType === 'Business') checkType = 'business';
+			else if (body.isBlueVerified) checkType = 'blue';
+			const label = body.affiliatesHighlightedLabel.label?.badge?.url;
 			return {
-				screenName: body.screenName,
-				name: body.name,
+				screenName: body.core.screenName,
+				name: body.core.name,
 				avatar: avatarRes.body,
-				avatarShape: data.user.profileImageShape,
+				avatarShape: body.profileImageShape,
 				label,
 				checkType,
-				followers: body.followersCount
+				followers: body.legacy.followersCount
 			};
 		} catch (err) {
 			const defaultPfp = await readFile(path.join(__dirname, '..', '..', 'assets', 'images', 'tweet', 'default.png'));
