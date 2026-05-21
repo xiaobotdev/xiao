@@ -26,9 +26,9 @@ module.exports = class SuperpowerCommand extends Command {
 	}
 
 	async run(msg) {
-		const id = await this.random();
+		const title = await this.random();
 		return msg.reply(stripIndents`
-			Your superpower is... **${article.title}**!
+			Your superpower is... **${title}**!
 			https://powerlisting.fandom.com/wiki/${title.replace(/ /g, '_')}
 		`);
 	}
