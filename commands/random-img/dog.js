@@ -38,7 +38,7 @@ module.exports = class DogCommand extends Command {
 
 	async getFact() {
 		try {
-			const { body } = await request.get('https://dog-api.kinduff.com/api/facts');
+			const { body } = await request.get('https://dogapi.dog/api/v2/facts');
 			return body.facts[0];
 		} catch {
 			return 'Dogs are better than cats.';
