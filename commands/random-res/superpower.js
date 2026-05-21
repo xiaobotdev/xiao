@@ -1,6 +1,7 @@
 const Command = require('../../framework/Command');
 const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
+const { delay } = require('../../util/Util');
 
 module.exports = class SuperpowerCommand extends Command {
 	constructor(client) {
@@ -26,34 +27,33 @@ module.exports = class SuperpowerCommand extends Command {
 
 	async run(msg) {
 		const id = await this.random();
-		const article = await this.fetchSuperpower(id);
 		return msg.reply(stripIndents`
 			Your superpower is... **${article.title}**!
-			_${article.abstract.split('1')[0].trim()}_
+			https://powerlisting.fandom.com/wiki/${title.replace(/ /g, '_')}
 		`);
 	}
 
 	async random() {
-		const { body } = await request
-			.get('http://powerlisting.fandom.com/api.php')
-			.query({
-				action: 'query',
-				list: 'random',
-				rnnamespace: 0,
-				rnlimit: 1,
-				format: 'json',
-				formatversion: 2
-			});
-		return body.query.random[0].id;
-	}
-
-	async fetchSuperpower(id) {
-		const { body } = await request
-			.get('https://powerlisting.fandom.com/api/v1/Articles/Details')
-			.query({
-				ids: id,
-				abstract: 500
-			});
-		return body.items[id.toString()];
+		let retries = 0;
+		try {
+			const { body } = await request
+				.get('http://powerlisting.fandom.com/api.php')
+				.query({
+					action: 'query',
+					list: 'random',
+					rnnamespace: 0,
+					rnlimit: 1,
+					format: 'json',
+					formatversion: 2
+				});
+			return body.query.random[0].title;
+		} catch (err) {
+			if (err.status === 403 && retries < 6) {
+				await delay(500);
+				retries++;
+				this.random();
+			}
+			throw err;
+		}
 	}
 };

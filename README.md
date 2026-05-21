@@ -113,7 +113,7 @@ Only if you want to use the DECTalk command.
 18. Start Xiao up!
 
 ## Commands
-Total: 516
+Total: 515
 
 ### Utility:
 
@@ -173,7 +173,6 @@ Total: 516
 * **magic-conch:** Asks your question to the Magic Conch.
 * **name:** Responds with a random name, with the gender of your choice.
 * **never-have-i-ever:** Responds with a random "Never Have I Ever..." statement.
-* **number-fact:** Responds with a random fact about a specific number.
 * **offspring:** Determines if your new child will be a boy or a girl.
 * **opinion:** Determines the opinion on something.
 * **oracle-turret:** Responds with a random Oracle Turret quote.
@@ -788,8 +787,6 @@ Total: 516
    - [Random User Generator](https://randomuser.me/) ([API](https://randomuser.me/documentation))
 * **never-have-i-ever:**
    - [PsyCat Games](https://psycatgames.com/) ([Statement Data](https://psycatgames.com/app/never-have-i-ever/))
-* **number-fact:**
-   - [Numbers API](http://numbersapi.com/) (Trivia API)
 * **oracle-turret:**
    - [Valve](https://www.valvesoftware.com/en/) ([Original "Portal 2" Game](http://www.thinkwithportals.com/))
 * **pun:**
