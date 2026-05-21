@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@discordjs/opus": "^0.10.0",
 		"@discordjs/voice": "^0.19.2",
-		"@dotenvx/dotenvx": "^1.65.0",
+		"@dotenvx/dotenvx": "^1.66.0",
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^1.0.0",
 		"@skyra/gifenc": "^1.0.1",
@@ -73,7 +73,7 @@
 		"qr": "^0.6.0",
 		"random-js": "^2.1.0",
 		"sagiri": "^4.3.0",
-		"semver": "^7.7.4",
+		"semver": "^7.8.0",
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^3.0.1",
 		"stream-chain": "^4.0.1",
@@ -81,7 +81,7 @@
 		"text-diff": "^1.0.1",
 		"tictactoe-minimax-ai": "github:marianoheller/tic-tac-toe-minimax",
 		"twitter-openapi-typescript": "^0.0.56",
-		"user-agents": "^2.1.53",
+		"user-agents": "^2.1.67",
 		"valid-url": "^1.0.9",
 		"wavefile": "^11.0.0",
 		"winston": "^3.19.0",
@@ -96,7 +96,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"eslint": "^10.3.0",
+		"eslint": "^10.4.0",
 		"eslint-config-amber": "^2.0.5",
 		"eslint-plugin-jsonc": "^2.21.1",
 		"globals": "^17.6.0"
