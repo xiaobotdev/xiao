@@ -1,3 +1,12 @@
+// Polyfill until tensorflow updates
+const util = require('util');
+if (typeof util.isNullOrUndefined !== 'function') {
+	util.isNullOrUndefined = v => v === null || v === undefined;
+}
+if (typeof util.isArray !== 'function') {
+	util.isArray = Array.isArray;
+}
+
 const tf = require('@tensorflow/tfjs-node');
 const faceDetection = require('@tensorflow-models/face-detection');
 const faceModel = faceDetection.SupportedModels.MediaPipeFaceDetector;
