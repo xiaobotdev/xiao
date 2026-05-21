@@ -39,7 +39,7 @@ module.exports = class DogCommand extends Command {
 	async getFact() {
 		try {
 			const { body } = await request.get('https://dogapi.dog/api/v2/facts');
-			return body.facts[0];
+			return body.data[0].attributes.body;
 		} catch {
 			return 'Dogs are better than cats.';
 		}
