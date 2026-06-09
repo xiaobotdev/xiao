@@ -26,7 +26,7 @@ module.exports = class AvatarChanger {
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bgImg, 0, 0, base.width, base.height);
 		ctx.drawImage(base, 0, 0);
-		return canvas.toBuffer('image/png'); 
+		return canvas.toBuffer('image/png');
 	}
 
 	async setAvatar(hatOrBackground, type) {
@@ -38,10 +38,11 @@ module.exports = class AvatarChanger {
 		}
 		this.isWearingHat = true;
 		await this.client.redis.db.set('hat', true);
+		let image;
 		if (type === 'background') {
-			const image = await this.editAvatarBackground(hatOrBackground);
+			image = await this.editAvatarBackground(hatOrBackground);
 		} else {
-			const image = await this.editAvatar(hatOrBackground);
+			image = await this.editAvatar(hatOrBackground);
 		}
 		await this.client.user.setAvatar(image);
 	}
@@ -52,6 +53,7 @@ module.exports = class AvatarChanger {
 		if (holiday && !this.isWearingHat) {
 			let { hat, background } = holiday;
 			if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
+			if (Array.isArray(background)) background = background[Math.floor(Math.random() * background.length)];
 			try {
 				await this.setAvatar(hat || background, hat ? 'hat' : 'background');
 				this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`);
