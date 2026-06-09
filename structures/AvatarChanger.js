@@ -21,7 +21,7 @@ module.exports = class AvatarChanger {
 
 	async editAvatarBackground(background) {
 		const bgImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', `${background}.png`));
-		const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
+		const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'XiaoClear.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(bgImg, 0, 0, base.width, base.height);
