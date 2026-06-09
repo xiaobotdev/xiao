@@ -19,8 +19,18 @@ module.exports = class AvatarChanger {
 		return canvas.toBuffer('image/png');
 	}
 
-	async setAvatar(hat) {
-		if (!hat) {
+	async editAvatarBackground(background) {
+		const bgImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', `${background}.png`));
+		const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
+		const canvas = createCanvas(base.width, base.height);
+		const ctx = canvas.getContext('2d');
+		ctx.drawImage(bgImg, 0, 0, base.width, base.height);
+		ctx.drawImage(base, 0, 0);
+		return canvas.toBuffer('image/png'); 
+	}
+
+	async setAvatar(hatOrBackground, type) {
+		if (!hatOrBackground) {
 			await this.client.redis.db.set('hat', false);
 			this.isWearingHat = false;
 			await this.client.user.setAvatar(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
@@ -28,7 +38,11 @@ module.exports = class AvatarChanger {
 		}
 		this.isWearingHat = true;
 		await this.client.redis.db.set('hat', true);
-		const image = await this.editAvatar(hat);
+		if (type === 'background') {
+			const image = await this.editAvatarBackground(hatOrBackground);
+		} else {
+			const image = await this.editAvatar(hatOrBackground);
+		}
 		await this.client.user.setAvatar(image);
 	}
 
@@ -36,10 +50,10 @@ module.exports = class AvatarChanger {
 		const today = new Date();
 		const holiday = this.isHoliday(today);
 		if (holiday && !this.isWearingHat) {
-			let { hat } = holiday;
+			let { hat, background } = holiday;
 			if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
 			try {
-				await this.setAvatar(hat);
+				await this.setAvatar(hat || background, hat ? 'hat' : 'background');
 				this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`);
 			} catch (err) {
 				this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`);

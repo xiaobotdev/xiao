@@ -64,6 +64,15 @@
 		"activity": "May the fourth be with you."
 	},
 	{
+		"name": "Pride Month",
+		"background": "trans",
+		"month": 6,
+		"startDay": 1,
+		"endDay": 30,
+		"activity": "Happy Pride!"
+
+	},
+	{
 		"name": "Batman Day",
 		"hat": "superhero",
 		"month": 9,
