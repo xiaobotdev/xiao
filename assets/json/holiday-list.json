@@ -85,5 +85,12 @@
 		"month": 3,
 		"day": 10,
 		"activity": "It's-a-me, Mario!"
+	},
+	{
+		"name": "Valentine's Day",
+		"foreground": "hearts",
+		"month": 2,
+		"day": 14,
+		"activity": "I... I love you... JK!"
 	}
 ]

@@ -1,5 +1,6 @@
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const path = require('path');
+const { oneLine } = require('common-tags');
 const holidayList = require('../assets/json/holiday-list');
 
 module.exports = class AvatarChanger {
@@ -9,28 +10,33 @@ module.exports = class AvatarChanger {
 		this.isWearingHat = false;
 	}
 
-	async editAvatar(hat) {
-		const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
-		const hatImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'hat', `${hat}.png`));
-		const canvas = createCanvas(base.width, base.height);
+	async editAvatar({ hat, background, foreground } = {}) {
+		let xiaoImg;
+		if (background) {
+			xiaoImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'XiaoClear.png'));
+		} else {
+			xiaoImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
+		}
+		const canvas = createCanvas(xiaoImg.width, xiaoImg.height);
 		const ctx = canvas.getContext('2d');
-		ctx.drawImage(base, 0, 0);
-		ctx.drawImage(hatImg, 0, 0, base.width, base.height);
+		if (background) {
+			const bgImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', `${background}.png`));
+			ctx.drawImage(bgImg, 0, 0, xiaoImg.width, xiaoImg.height);
+		}
+		ctx.drawImage(xiaoImg, 0, 0);
+		if (hat) {
+			const hatImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'hat', `${hat}.png`));
+			ctx.drawImage(hatImg, 0, 0, xiaoImg.width, xiaoImg.height);
+		}
+		if (foreground) {
+			const fgImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', `${foreground}.png`));
+			ctx.drawImage(fgImg, 0, 0, xiaoImg.width, xiaoImg.height);
+		}
 		return canvas.toBuffer('image/png');
 	}
 
-	async editAvatarBackground(background) {
-		const bgImg = await loadImage(path.join(__dirname, '..', 'assets', 'images', `${background}.png`));
-		const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'XiaoClear.png'));
-		const canvas = createCanvas(base.width, base.height);
-		const ctx = canvas.getContext('2d');
-		ctx.drawImage(bgImg, 0, 0, base.width, base.height);
-		ctx.drawImage(base, 0, 0);
-		return canvas.toBuffer('image/png');
-	}
-
-	async setAvatar(hatOrBackground, type) {
-		if (!hatOrBackground) {
+	async setAvatar({ hat, background, foreground } = {}) {
+		if (!hat && !background && !foreground) {
 			await this.client.redis.db.set('hat', false);
 			this.isWearingHat = false;
 			await this.client.user.setAvatar(path.join(__dirname, '..', 'assets', 'images', 'Xiao.png'));
@@ -38,12 +44,7 @@ module.exports = class AvatarChanger {
 		}
 		this.isWearingHat = true;
 		await this.client.redis.db.set('hat', true);
-		let image;
-		if (type === 'background') {
-			image = await this.editAvatarBackground(hatOrBackground);
-		} else {
-			image = await this.editAvatar(hatOrBackground);
-		}
+		const image = await this.editAvatar({ hat, foreground, background });
 		await this.client.user.setAvatar(image);
 	}
 
@@ -51,12 +52,16 @@ module.exports = class AvatarChanger {
 		const today = new Date();
 		const holiday = this.isHoliday(today);
 		if (holiday && !this.isWearingHat) {
-			let { hat, background } = holiday;
+			let { hat, background, foreground } = holiday;
 			if (Array.isArray(hat)) hat = hat[Math.floor(Math.random() * hat.length)];
 			if (Array.isArray(background)) background = background[Math.floor(Math.random() * background.length)];
+			if (Array.isArray(foreground)) foreground = foreground[Math.floor(Math.random() * foreground.length)];
 			try {
-				await this.setAvatar(hat || background, hat ? 'hat' : 'background');
-				this.client.logger.info(`[AVATAR] Updated avatar to ${hat}!`);
+				await this.setAvatar({ hat, background, foreground });
+				this.client.logger.info(oneLine`
+					[AVATAR] Avatar updated! (hat: ${hat || 'none'}, bg: ${background || 'none'}, fg:
+					${foreground || 'none'})
+				`);
 			} catch (err) {
 				this.client.logger.error(`[AVATAR] Failed to update avatar.\n${err.stack}`);
 			}
