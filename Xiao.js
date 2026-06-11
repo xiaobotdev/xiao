@@ -139,6 +139,7 @@ client.on('clientReady', async () => {
 	try {
 		const disabled = await client.redis.db.hgetall('disabled');
 		for (const command of Object.keys(disabled)) {
+			if (!client.registry.commands.has(command)) continue;
 			client.registry.commands.get(command).disable();
 			client.logger.info(`[DISABLED] Disabled the ${command} command.`);
 		}
