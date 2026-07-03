@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@discordjs/opus": "^0.10.0",
 		"@discordjs/voice": "^0.19.2",
-		"@dotenvx/dotenvx": "^1.66.0",
+		"@dotenvx/dotenvx": "^2.1.4",
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^1.0.0",
 		"@skyra/gifenc": "^1.0.1",
