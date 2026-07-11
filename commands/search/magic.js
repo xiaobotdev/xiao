@@ -4,6 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 const { stripIndents } = require('common-tags');
 const { embedURL } = require('../../util/Util');
 const logos = require('../../assets/json/logos');
+const { version } = require('../../package');
 
 module.exports = class MagicCommand extends Command {
 	constructor(client) {
@@ -99,7 +100,8 @@ module.exports = class MagicCommand extends Command {
 	async random(funny) {
 		const { body } = await request
 			.get('https://api.scryfall.com/cards/random')
-			.query({ q: `is:spell game:paper${funny ? ' is:funny' : ''}` });
+			.query({ q: `is:spell game:paper${funny ? ' is:funny' : ''}` })
+			.set({ 'User-Agent': `Xiao/${version}` });
 		return body;
 	}
 };
