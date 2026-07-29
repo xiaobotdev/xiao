@@ -113,8 +113,8 @@ module.exports = class JeopardyScrape {
 			}
 		}
 		const cluesBefore = this.clues.length;
-		const latestSeason = this.seasons[this.seasons.length - 1];
 		const seasons = await this.fetchSeasons();
+		const latestSeason = this.seasons[this.seasons.length - 1];
 		for (const season of seasons) {
 			if (this.seasons.includes(season) && latestSeason !== season) continue;
 			if (latestSeason !== season) this.seasons.push(season);
