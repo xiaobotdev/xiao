@@ -17,6 +17,7 @@ module.exports = class JeopardyScrape {
 		this.gameIDs = [];
 		this.seasons = null;
 		this.imported = false;
+		this.retry = new Set();
 	}
 
 	async fetchSeasons() {
@@ -125,8 +126,23 @@ module.exports = class JeopardyScrape {
 			for (const gameID of games) {
 				if (this.gameIDs.includes(gameID)) continue;
 				this.gameIDs.push(gameID);
-				const clues = await this.fetchClues(gameID);
-				this.clues.push(...clues);
+				try {
+					const clues = await this.fetchClues(gameID);
+					this.clues.push(...clues);
+				} catch {
+					this.retry.add(gameID);
+				}
+			}
+		}
+		while (this.retry.size > 0) {
+			for (const gameID of this.retry) {
+				try {
+					this.retry.delete(gameID);
+					const clues = await this.fetchClues(gameID);
+					this.clues.push(...clues);
+				} catch {
+					this.retry.add(gameID);
+				}
 			}
 		}
 		this.exportData();
