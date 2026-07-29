@@ -14,7 +14,7 @@ module.exports = class JeopardyScrape {
 		Object.defineProperty(this, 'client', { value: client });
 
 		this.clues = [];
-		this.gameIDs = null;
+		this.gameIDs = [];
 		this.seasons = null;
 		this.imported = false;
 	}
