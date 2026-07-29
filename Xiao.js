@@ -293,10 +293,10 @@ client.on('clientReady', async () => {
 	// Update Jeopardy questions
 	try {
 		client.logger.info('[JEOPARDY] Starting Jeopardy clue update...');
-		const newClues = await client.jeopardy.checkForUpdates();
+		const newClues = await client.jeopardy.checkForUpdates(true);
 		client.logger.info(`[JEOPARDY] Added ${newClues} new Jeopardy clues.`);
 		setInterval(() => {
-			client.jeopardy.checkForUpdates()
+			client.jeopardy.checkForUpdates(false)
 				.then(count => client.logger.info(`[JEOPARDY] Added ${count} new Jeopardy clues.`))
 				.catch(err => client.logger.error(`[JEOPARDY] Failed to update Jeopardy clues\n${err.stack}`));
 		}, 8.64e+7);

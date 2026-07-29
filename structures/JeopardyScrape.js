@@ -103,7 +103,7 @@ module.exports = class JeopardyScrape {
 		return buf;
 	}
 
-	async checkForUpdates() {
+	async checkForUpdates(initial = true) {
 		if (!this.imported) {
 			const fileExists = await checkFileExists(path.join(__dirname, '..', 'data', 'jeopardy.json'));
 			if (fileExists) {
@@ -113,8 +113,14 @@ module.exports = class JeopardyScrape {
 			}
 		}
 		const cluesBefore = this.clues.length;
-		this.seasons = await this.fetchSeasons();
+		const seasons = await this.fetchSeasons();
+		if (initial) this.seasons = seasons;
+		const latestSeason = this.seasons[this.seasons.length - 1];
 		for (const season of this.seasons) {
+			if (!initial) {
+				if (this.seasons.includes(season) && latestSeason !== season) continue;
+				if (latestSeason !== season) this.seasons.push(season);
+			}
 			const games = await this.fetchSeason(season);
 			for (const gameID of games) {
 				if (this.gameIDs.includes(gameID)) continue;
