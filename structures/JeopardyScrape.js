@@ -157,6 +157,7 @@ module.exports = class JeopardyScrape {
 					const clues = await this.fetchClues(gameID);
 					this.clues.push(...clues);
 				} catch {
+					this.retry.delete(gameID);
 					this.failed.push(gameID);
 				}
 			}
