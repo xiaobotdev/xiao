@@ -6,7 +6,7 @@ const { pick } = require('stream-json/filters/pick.js');
 const { streamArray } = require('stream-json/streamers/stream-array.js');
 const { chain } = require('stream-chain');
 const path = require('path');
-const { checkFileExists } = require('../util/Util');
+const { checkFileExists, removeFromArray } = require('../util/Util');
 const rounds = ['jeopardy_round', 'double_jeopardy_round', 'final_jeopardy_round'];
 
 module.exports = class JeopardyScrape {
@@ -18,6 +18,7 @@ module.exports = class JeopardyScrape {
 		this.seasons = null;
 		this.imported = false;
 		this.retry = new Set();
+		this.failed = [];
 	}
 
 	async fetchSeasons() {
@@ -73,9 +74,10 @@ module.exports = class JeopardyScrape {
 
 	async importData() {
 		const read = await fs.promises.readFile(path.join(__dirname, '..', 'data', 'jeopardy.json'), { encoding: 'utf8' });
-		const { seasons, gameIDs } = JSON.parse(read);
+		const { seasons, gameIDs, failed } = JSON.parse(read);
 		this.gameIDs = gameIDs;
 		this.seasons = seasons;
+		this.failed = failed || [];
 		this.clues = await this.importClues();
 		this.imported = true;
 		return this;
@@ -98,10 +100,24 @@ module.exports = class JeopardyScrape {
 		const buf = Buffer.from(JSON.stringify({
 			clues: this.clues,
 			gameIDs: this.gameIDs,
-			seasons: this.seasons
+			seasons: this.seasons,
+			failed: this.failed
 		}));
 		fs.writeFileSync(path.join(__dirname, '..', 'data', 'jeopardy.json'), buf, { encoding: 'utf8' });
 		return buf;
+	}
+
+	async retryFailed() {
+		for (const gameID of this.failed) {
+			try {
+				const clues = await this.fetchClues(gameID);
+				this.clues.push(...clues);
+				removeFromArray(this.failed, gameID);
+			} catch {
+				continue;
+			}
+		}
+		return this.failed;
 	}
 
 	async checkForUpdates(initial = true) {
@@ -141,10 +157,11 @@ module.exports = class JeopardyScrape {
 					const clues = await this.fetchClues(gameID);
 					this.clues.push(...clues);
 				} catch {
-					this.retry.add(gameID);
+					this.failed.push(gameID);
 				}
 			}
 		}
+		await this.retryFailed();
 		this.exportData();
 		this.imported = true;
 		return this.clues.length - cluesBefore;
