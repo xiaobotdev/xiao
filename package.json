@@ -72,7 +72,7 @@
 		"pokersolver": "^2.1.4",
 		"qr": "^0.6.0",
 		"random-js": "^2.1.0",
-		"sagiri": "^4.3.0",
+		"sagiri": "^5.0.0",
 		"semver": "^7.8.5",
 		"sherlockjs": "^1.4.2",
 		"stackblur-canvas": "^3.0.1",
