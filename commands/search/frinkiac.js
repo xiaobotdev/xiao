@@ -3,7 +3,6 @@ const { PermissionFlagsBits } = require('discord.js');
 const request = require('node-superfetch');
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const moment = require('moment');
-const { shortenText, fillTextWithBreaks } = require('../../util/Canvas');
 
 module.exports = class FrinkiacCommand extends Command {
 	constructor(client) {
