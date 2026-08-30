@@ -55,7 +55,7 @@
 		"gm": "^1.25.1",
 		"html-entities": "^2.6.0",
 		"image-to-ascii": "^3.3.0",
-		"ioredis": "^5.11.1",
+		"ioredis": "^6.0.0",
 		"js-chess-engine": "^2.4.6",
 		"jszip": "^3.10.1",
 		"kuroshiro": "^1.2.0",
