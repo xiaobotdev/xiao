@@ -82,7 +82,7 @@ module.exports = class FrinkiacCommand extends Command {
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');
 		ctx.drawImage(base, 0, 0);
-		const fontSize = Math.round(base.height / 10);
+		const fontSize = Math.round(base.height / 15);
 		ctx.font = this.client.fonts.get('akbar.ttf').toCanvasString(fontSize);
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'center';
