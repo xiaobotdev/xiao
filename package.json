@@ -49,7 +49,7 @@
 		"custom-translate": "^2.2.9",
 		"didyoumean2": "^7.0.4",
 		"discord.js": "^14.27.0",
-		"emoji-regex": "^10.6.0",
+		"emoji-regex": "^11.0.0",
 		"fen-validator": "^2.0.1",
 		"font-finder": "^1.1.0",
 		"gm": "^1.25.1",
