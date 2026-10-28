@@ -10,6 +10,13 @@ Just read `LICENSE.md`. Give credit if you use any part of this monster, thanks.
 
 ## FAQ
 
+> I want to contribute but I use AI to code. Can I?
+
+**I do not accept pull requests entirely generated with AI.** If AI helped you in the process, you
+*must* disclose where, how, why, and to what extent AI was used AND include screenshots or a link
+to your entire chat history. This is the only way I can verify your code is legit. Again, let me
+clarify, **I do not accept pull requests entirely generated with AI.**
+
 > Will Xiao ever be public again?
 
 [No. :)](https://discord.com/api/oauth2/authorize?client_id=1219787468614795295&scope=bot&permissions=8)
