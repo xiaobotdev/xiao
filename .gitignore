@@ -3,6 +3,7 @@ node_modules/
 package-lock.json
 yarn.lock
 config.gypi
+dectalk/
 
 # Log Files
 logs/

@@ -37,10 +37,6 @@ No, but some commands may not work without them.
 
 Yes, several commands and functions rely on it.
 
-> Do I really need to install Wine and Wine32 on Linux?
-
-Only if you want to use the DECTalk command.
-
 ## Installing
 
 ### Filling Out `.env`
@@ -61,6 +57,13 @@ Only if you want to use the DECTalk command.
 * `TF_CPP_MIN_LOG_LEVEL` is the config for Tensorflow console logging. Setting it to "1"
 means that Tensorflow will only log warnings and errors and skip debugging info. I don't
 recommend setting this to anything higher than 1.
+* `DECTALK_PATH` is an option that tells Xiao where DECTalk is installed. This is where the `say` file is.
+  * If you installed it pre-built to Xiao's local directory, set this to `local`.
+  * If you installed it to Xiao's local directory and built it (so `say` is in `dist`), set this to `localdist`.
+  * If you installed it pre-built to your home directory, set this to `home`.
+  * If you installed it to your home directory and built it (say `say` is in `dist`), set this to `homedist`.
+  * If you installed it somewhere else, put the directory (including `/say` at the end). Xiao will try to resolve it.
+  * If you don't want or didn't install it, set this to `off`.
 
 #### Emojis IDs
 * `SUCCESS_EMOJI_ID` is an emoji ID for when things succeed. Defaults to "✅".
@@ -99,16 +102,12 @@ recommend setting this to anything higher than 1.
 6. Run `apt update` and `apt upgrade` to install the latest dependencies of your distro.
 7. Run `apt install ffmpeg` to install ffmpeg.
 8. Run `apt install liblqr-1-0-dev liblqr-1-0` to install liblqr (needed for ImageMagick).
-9. [Follow these instructions to install ImageMagick](https://www.tecmint.com/install-imagemagick-on-debian-ubuntu/).
-10. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04). Remember to set up a password!
-11. Run `apt install wine` to install wine.
-12. Run `dpkg --add-architecture i386` to allow installation of wine32.
-13. Run `apt update` again.
-14. Run `apt install wine32` to install wine32.
-15. Run `apt install xvfb` to install xvfb.
-16. Run `yarn install --production` in the folder you cloned the bot.
-17. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
-18. Start Xiao up!
+9. [Follow these instructions to install ImageMagick](https://imagemagick.org/advanced-linux-installation/#linux).
+10. [Follow these instructions to set up Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04). Remember to set up a password!
+11. [Install DECTalk](https://github.com/dectalk/dectalk). You can install from releases or build it, just make sure to set `DECTALK_PATH`.
+12. Run `yarn install --production` in the folder you cloned the bot.
+13. Run `npx parse-domain-update` to update the domain list for `parse-domain`.
+14. Start Xiao up!
 
 ## Commands
 Total: 514
@@ -1443,7 +1442,7 @@ Total: 514
    - [Acedio](https://github.com/Acedio) ([Code, Sounds](https://github.com/Acedio/animalese.js))
    - [Nintendo](https://www.nintendo.com/) ([Original "Animal Crossing" Game](https://animal-crossing.com/))
 * **dec-talk:**
-   - [Digital Equipment Corporation](http://gordonbell.azurewebsites.net/digital/timeline/tmlnhome.htm) (Original DECTalk Software)
+   - [DECTalk](https://github.com/dectalk/dectalk) (DECTalk Software)
 * **mindfulness:**
    - [InspiroBot](https://inspirobot.me/) (API)
 * **tts:**
