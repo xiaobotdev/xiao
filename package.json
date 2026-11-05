@@ -29,7 +29,7 @@
 		"node": ">=24"
 	},
 	"dependencies": {
-		"@discordjs/opus": "^0.10.0",
+		"@discordjs/opus": "^0.11.0",
 		"@discordjs/voice": "^0.19.2",
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^1.0.10",
