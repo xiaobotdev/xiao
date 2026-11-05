@@ -91,6 +91,11 @@ module.exports = class MagicCommand extends Command {
 				.get('https://api.scryfall.com/cards/search')
 				.query({ q: `${query} game:paper${funny ? ' is:funny' : ''}` })
 				.set({ 'User-Agent': `Xiao/${version}` });
+			if (body.data.length > 1) {
+				const filtered = body.data.filter(c => c.name.toLowerCase() === query.toLowerCase())[0];
+				if (!filtered) return body.data[0];
+				return filtered;
+			}
 			return body.data[0];
 		} catch (err) {
 			if (err.status === 404) return null;
