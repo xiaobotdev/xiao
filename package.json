@@ -34,7 +34,7 @@
 		"@mediapipe/face_detection": "^0.4.1646425229",
 		"@napi-rs/canvas": "^1.0.10",
 		"@skyra/gifenc": "^1.0.1",
-		"@snazzah/davey": "^0.1.12",
+		"@snazzah/davey": "^0.2.0",
 		"@tensorflow-models/face-detection": "^1.0.3",
 		"@tensorflow/tfjs-node": "^4.22.0",
 		"@twemoji/parser": "^17.0.2",
